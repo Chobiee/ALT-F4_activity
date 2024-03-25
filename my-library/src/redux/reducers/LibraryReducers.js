@@ -6,13 +6,15 @@ const initialState ={
         {
             id:1,
             lastname: 'Farul',
-            firstname:'Hannah'
+            firstname:'Hannah',
+            state:'ACTIVE'
         },
 
         {
             id:2,
             lastname: 'Sabit',
-            firstname:'Lance'
+            firstname:'Lance',
+            state:'ACTIVE'
         }
     ],
 
@@ -34,6 +36,12 @@ const initialStates ={
             status: 'Not Available'
         }
     ]
+}
+const singleStudentInitialized={
+    id:'',
+    firstname:'',
+    lastname:'',
+    state:'ACTIVE'
 }
 
 
@@ -57,5 +65,13 @@ export const BookReducers = (state=initialStates, {type,payload}) => {
            return state;
      }
    }
+
+   export const selectedStudentReducer = (state=singleStudentInitialized, {type,payload}) => {
+    switch (type) {
+       case ActionTypes.SELECTED_STUDENT:
+           return {...state, ...payload};
    
-   
+       default:
+           return state;
+     }
+   }
